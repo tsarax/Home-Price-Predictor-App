@@ -1,4 +1,5 @@
 
+
 # Example project repository
 
 <!-- toc -->
@@ -58,7 +59,7 @@ As our mission is to make the house hunting process less daunting, faster, and m
 
 **Story3:** A/B Testing -8 points
 
-### Theme2:
+### Theme2: Housing Scenario Generator
 
 ***Epic1:*** Predict most significant attribute to decrease cost
 
