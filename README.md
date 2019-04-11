@@ -28,37 +28,67 @@ As our mission is to make the house hunting process less daunting, faster, and m
 
 ## Backlog 
 \* indicates to-do in next two weeks
+
 ###Theme1: Predicting Housing Cost
+
 ***Epic1:*** Python-Based Predictive Model
+
 **Story1:** Data Cleaning - 2points \*
+
 **Story2:** Model Building: Stepwise Linear Regression -1 point \*
+
 **Story3:** Model Predictions: Linear Regression -1 point \*
+
 **Story4:** Model Building: Random Forest -1 point \*
+
 **Story5:** Model Predictions: Random Forest -1 point \*
+
 **Story6:** Compare Models & Pick Best - 0 points \*
+
 **Story7:** Model Testing -2 points \*
+
 **Story8:** Unit Testing -4 points
+
 ***Epic2:*** User Interface
+
 **Story1:** Develop interface code (CSS and HTML) -8 points
+
 **Story2:** User input interact with model -4 points
+
 **Story3:**A/B Testing -8 points
+
 ###Theme2:
+
 ***Epic1:*** Predict most significant attribute to decrease cost
+
 **Story1:** Develop code to indicate most significant price change -4 points
+
 **Story2:** Develop code to change the significant attribute appropriately and run a new prediction -4 points
+
 ***Epic2:*** User Interface
+
 **Story1:** Develop interface code for showing suggestion -2 points
+
 **Story2:** Develop two buttons: like and dislike for suggestion-4 points
+
 **Story3:** Store suggestion likes and dislikes -4 points
 
 
 ##Icebox
+
 ###Theme1: Compare Searches
+
 ***Epic1:*** Storing past search and result
+
 **Story1:** Create dataframe for searches done during session -8 points
+
 ***Epic2:*** Changing interface for new search
+
 **Story1:** Create button for new search -2 points
+
 **Story2:** Move past search below current search -8 points
+
+
 ## Repo structure 
 
 ```
