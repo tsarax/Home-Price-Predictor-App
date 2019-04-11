@@ -18,15 +18,47 @@
 
 ## Project Charter 
 
-**Vision**: To enable animals everywhere to enjoy music just for them. 
+**Vision**: The 2018 National Association of Realtors Profile of Home Buyers and Sellers indicate that 50% of home buyers find the home they purchase on the internet. While the internet enables consumers to gather greater information regarding such an important decision, starting a search to find a home can be daunting. With this app, potential buyers in King County, USA will have a place to easily find a price approximation for their dream home and see how changes in home attributes can make their search more affordable and realistic, allowing them to narrow their search and make the process less daunting. This can be quite impactful because King County is home to approximately 2.189 million residents, including the major city of Seattle and surrounding areas. 
 
-**Mission**: Enable users to add songs that they like and produce new song recommendations based on their entries.
+**Mission**: The app will allow a user to input criteria they are interested in for a home purchase in King County, such as bedroom and bathroom count, square footage, waterfront access, condition, year built range, and approximate zipcode or city name. The user will then receive a prediction of cost for a home with those attributes and suggest the best cost saving attribute to give up. For instance, if bathroom count would significantly decrease the predicted cost of the home the most out of any attribute, this attribute would be suggested to change.
 
-**Success criteria**: Users play 80% of recommended songs more than once. 
+**Success criteria**: In order to evaluate the success of the project, we will produce metrics for the performance of our model by splitting the dataset into test and train sets and calculate predictions. The main performance metric will be test R^2 since this value will also indicate the lowest RMSE, which is the root mean squared error between the predictions and the actual values. Anything above a 55% R^2 will indicate a success. If the R^2 is above this criteria, it indicates the predictions for house prices match closely to the actual observed prices. 
+As our mission is to make the house hunting process less daunting, faster, and more affordable, the business success will be determined by user appreciation for suggestions given by the app. For instance, once a user runs their search in the app, we will give the predicted cost and a suggestion for changing an attribute that reduces this cost. The user can interact with the interface to indicate if this suggestion was helpful or not. 
 
 
-_Note_: Project charters should actually be more detailed than this! But this is where the charter belongs.  
+## Backlog 
+\* indicates to-do in next two weeks
+###Theme1: Predicting Housing Cost
+***Epic1:*** Python-Based Predictive Model
+**Story1:** Data Cleaning - 2points \*
+**Story2:** Model Building: Stepwise Linear Regression -1 point \*
+**Story3:** Model Predictions: Linear Regression -1 point \*
+**Story4:** Model Building: Random Forest -1 point \*
+**Story5:** Model Predictions: Random Forest -1 point \*
+**Story6:** Compare Models & Pick Best - 0 points \*
+**Story7:** Model Testing -2 points \*
+**Story8:** Unit Testing -4 points
+***Epic2:*** User Interface
+**Story1:** Develop interface code (CSS and HTML) -8 points
+**Story2:** User input interact with model -4 points
+**Story3:**A/B Testing -8 points
+###Theme2:
+***Epic1:*** Predict most significant attribute to decrease cost
+**Story1:** Develop code to indicate most significant price change -4 points
+**Story2:** Develop code to change the significant attribute appropriately and run a new prediction -4 points
+***Epic2:*** User Interface
+**Story1:** Develop interface code for showing suggestion -2 points
+**Story2:** Develop two buttons: like and dislike for suggestion-4 points
+**Story3:** Store suggestion likes and dislikes -4 points
 
+
+##Icebox
+###Theme1: Compare Searches
+***Epic1:*** Storing past search and result
+**Story1:** Create dataframe for searches done during session -8 points
+***Epic2:*** Changing interface for new search
+**Story1:** Create button for new search -2 points
+**Story2:** Move past search below current search -8 points
 ## Repo structure 
 
 ```
