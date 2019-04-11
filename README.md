@@ -1,3 +1,4 @@
+
 # Example project repository
 
 <!-- toc -->
@@ -29,7 +30,7 @@ As our mission is to make the house hunting process less daunting, faster, and m
 ## Backlog 
 \* indicates to-do in next two weeks
 
-###Theme1: Predicting Housing Cost
+### Theme1: Predicting Housing Cost
 
 ***Epic1:*** Python-Based Predictive Model
 
@@ -57,7 +58,7 @@ As our mission is to make the house hunting process less daunting, faster, and m
 
 **Story3:**A/B Testing -8 points
 
-###Theme2:
+### Theme2:
 
 ***Epic1:*** Predict most significant attribute to decrease cost
 
@@ -74,9 +75,9 @@ As our mission is to make the house hunting process less daunting, faster, and m
 **Story3:** Store suggestion likes and dislikes -4 points
 
 
-##Icebox
+## Icebox
 
-###Theme1: Compare Searches
+### Theme1: Compare Searches
 
 ***Epic1:*** Storing past search and result
 
