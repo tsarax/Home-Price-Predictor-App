@@ -56,7 +56,7 @@ As our mission is to make the house hunting process less daunting, faster, and m
 
 **Story2:** User input interact with model -4 points
 
-**Story3:**A/B Testing -8 points
+**Story3:** A/B Testing -8 points
 
 ### Theme2:
 
