@@ -1,0 +1,6 @@
+type: mysql+pymysql
+host: mysql-nw-tovasimonson.cxvkn37dmg41.us-east-2.rds.amazonaws.com
+port: 3306
+user_env: root
+password_env: 12345678
+dbname: msia423
