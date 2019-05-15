@@ -1,4 +1,9 @@
 #for midproject
+To grab data from my S3 bucket and put to your own:
+-edit the config.py file and input AWS_KEY_ID, AWS_ACCESS_KEY, AWS_BUCKET, and AWS_FILE_PATH. 
+
+In order to make database in RDS: 
+-edit the config.py file and input RDS credentials: MYSQL_USER, MYSQL_PASSWORD, MYSQL_HOST, MYSQL_PORT
 
 # Example project repository
 
