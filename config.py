@@ -1,7 +1,11 @@
-DEBUG = True
-LOGGING_CONFIG = "config/logging/local.conf"
-PORT = 3000
-APP_NAME = "penny-lane"
-SQLALCHEMY_DATABASE_URI = 'sqlite:////tmp/tracks.db'
-SQLALCHEMY_TRACK_MODIFICATIONS = True
-HOST = "127.0.0.1"
+#RDS credentials
+MYSQL_USER=""
+MYSQL_PASSWORD=""
+MYSQL_HOST=""
+MYSQL_PORT=""
+
+#AWS credentials
+AWS_KEY_ID=""
+AWS_ACCESS_KEY=""
+AWS_BUCKET=""
+AWS_FILE_PATH=""
