@@ -19,7 +19,7 @@ def transferData():
         aws_secret_access_key= access_key)
 
    copy_source = {
-       'Bucket': 'nw-tovasimonson-s3',
+       'Bucket': 'nw-tovasimonson',
        'Key': 'kc_house_data.csv'
    }
    s3.meta.client.copy(copy_source, copy_bucket, copy_location)
