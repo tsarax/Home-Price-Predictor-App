@@ -35,23 +35,33 @@ As our mission is to make the house hunting process less daunting, faster, and m
 
 ***Epic1:*** Python-Based Predictive Model
 
-**Story1:** Data Cleaning - 2points \*
+**Story1:** Data Cleaning - 2points 
 
-**Story2:** Model Building: Stepwise Linear Regression -1 point \*
+**Story2:** Model Building: Stepwise Linear Regression -1 point 
 
-**Story3:** Model Predictions: Linear Regression -1 point \*
+**Story3:** Model Predictions: Linear Regression -1 point 
 
-**Story4:** Model Building: Random Forest -1 point \*
+**Story4:** Model Building: Random Forest -1 point 
 
-**Story5:** Model Predictions: Random Forest -1 point \*
+**Story5:** Model Predictions: Random Forest -1 point 
 
-**Story6:** Compare Models & Pick Best - 0 points \*
+**Story6:** Compare Models & Pick Best - 0 points 
 
-**Story7:** Model Testing -2 points \*
+**Story7:** Model Testing -2 points 
 
-**Story8:** Unit Testing -4 points
+**Story8:** Model Unit Testing -4 points \*
 
-***Epic2:*** User Interface
+**Story9:** Model Scripts - 4 points \*
+
+**Story10:** Model documentation - 4 points \*
+
+***Epic2:*** Data Setup
+
+**Story1:** S3 raw data - 1 point \*
+
+**Story2:** RDS set up and script - 1 point \*
+
+***Epic3:*** User Interface
 
 **Story1:** Develop interface code (CSS and HTML) -8 points
 
@@ -75,7 +85,7 @@ As our mission is to make the house hunting process less daunting, faster, and m
 
 **Story3:** Store suggestion likes and dislikes -4 points
 
-**Stroy4:** Logging Informaiton -4 points
+**Stroy4:** Logging Information -4 points
 
 
 ## Icebox
