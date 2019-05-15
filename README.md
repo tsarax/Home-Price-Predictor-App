@@ -171,9 +171,9 @@ The `requirements.txt` file contains the packages required to run the model code
 ```bash
 pip install virtualenv
 
-virtualenv pennylane
+virtualenv housingApp
 
-source pennylane/bin/activate
+source housingApp/bin/activate
 
 pip install -r requirements.txt
 
@@ -187,43 +187,49 @@ pip install -r requirements.txt
 
 ```
 
-### 2. Configure Flask app 
+### 2. Set up configurations for RDS (database) and AWS (get data):
 
-`config.py` holds the configurations for the Flask app. It includes the following configurations:
+`config.py` holds the configurations. It includes the following configurations:
 
-```python
-DEBUG = True  # Keep True for debugging, change to False when moving to production 
-LOGGING_CONFIG = "config/logging/local.conf"  # Path to file that configures Python logger
-PORT = 3002  # What port to expose app on 
-SQLALCHEMY_DATABASE_URI = 'sqlite:////tmp/tracks.db'  # URI for database that contains tracks
+MYSQL_USER=""
+
+MYSQL_PASSWORD=""
+
+MYSQL_HOST=""
+
+MYSQL_PORT=""
+
+DATABASE_NAME=""
+
+AWS_KEY_ID=""
+
+AWS_ACCESS_KEY=""
+
+AWS_BUCKET=""
+
+AWS_FILE_PATH=""
+
+
+
+### 3. Get the data
+
+To put the data into your S3 Bucket that was configured in `config.py`, run:
+```
+python acquire_data.py
+```
+ 
+ 
+
+### 4. Initialize the database 
+
+To create the empty database in RDS, configured in `config.py`, run: 
 
 ```
+python db.py --rds=True
+```
 
+To create a SQLite database, run:
 
-### 3. Initialize the database 
-
-To create the database in the location configured in `config.py` with one initial song, run: 
-
-`python run.py create --artist=<ARTIST> --title=<TITLE> --album=<ALBUM>`
-
-To add additional songs:
-
-`python run.py ingest --artist=<ARTIST> --title=<TITLE> --album=<ALBUM>`
-
-
-### 4. Run the application 
- 
- ```bash
- python app.py 
- ```
-
-### 5. Interact with the application 
-
-Go to [http://127.0.0.1:3000/]( http://127.0.0.1:3000/) to interact with the current version of hte app. 
-
-## Testing 
-
-Run `pytest` from the command line in the main project repository. 
-
-
-Tests exist in `test/test_helpers.py`
+```
+python db.py
+```
