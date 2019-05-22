@@ -1,0 +1,4 @@
+export MYSQL_USER="root"
+export MYSQL_PASSWORD="12345678"
+export MYSQL_HOST="mysql-nw-tovasimonson.cxvkn37dmg41.us-east-2.rds.amazonaws.com"
+export MYSQL_PORT="3306"

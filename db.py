@@ -5,7 +5,7 @@ import pandas as pd
 import os
 from os import path
 import config
-
+import argparse
 from sqlalchemy import create_engine, Column, Integer, String, Text
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
@@ -17,22 +17,22 @@ class House(Base):
     """create a table name Song with the following schema"""
     __tablename__ = 'house'
 
-    index = Column(sql.Integer(), primary_key=True, autoincrement=True)
+    index = Column(String(80), primary_key=True, nullable=False)
     bedrooms = Column(sql.Float(), nullable=False)
     bathrooms = Column(sql.Float(), nullable=False)
-    sqft_lot = Column(sql.Float(), nullable=False)
     floors = Column(sql.Float(), nullable=False)
-    condition = Column(sql.Float(), nullable=False)
     waterfront = Column(sql.Float())
+    condition = Column(sql.Float(), nullable=False)
     sqft_basement = Column(sql.Float(), nullable=False)
     yr_built = Column(sql.Float(), nullable=False)
     yr_renovated = Column(sql.Float(), nullable=False)
-    city = Column(String(80), nullable=False)
+    lot_log = Column(sql.Float(), nullable=False)
+
 
 
     def __repr__(self):
-        house_repr = "<(bedrooms='%s', bathrooms='%s', sqft_lot='%s', floors='%s', condition='%s', waterfront='%s', sqft_basement='%s', yr_built='%s', yr_renovated = '%s')>"
-        return house_repr % ( self.bedrooms, self.bathrooms, self.sqft_lot, self.floors, self.conditon, self.waterfront, self.sqft_basement, self.yr_built, self.yr_renovated)
+        house_repr = "<(bedrooms='%s', bathrooms='%s', floors='%s',  waterfront='%s', condition='%s',sqft_basement='%s', yr_built='%s', yr_renovated = '%s', sqft_lot='%s')>"
+        return house_repr % ( self.bedrooms, self.bathrooms, self.floors,  self.waterfront, self.conditon, self.sqft_basement, self.yr_built, self.yr_renovated,self.sqft_lot)
 
 
 def create_db(rds=False):  
