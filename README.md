@@ -181,8 +181,8 @@ pip install -r requirements.txt
 #### With `conda`
 
 ```bash
-conda create -n pennylane python=3.7
-conda activate pennylane
+conda create -n housingApp python=3.7
+conda activate housingApp
 pip install -r requirements.txt
 
 ```
