@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <link href="static/basic.css" rel="stylesheet">
+</head>
+<html>
+<title>House Price Prediction</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<body>
+
+
+<div class="main" align="center">
+    <div  align="center">
+        <img src="static/result_banner1.png" >
+    </div>   
+  <br><br>
+    <div class="content" align="center">
+        <img src="static/house.png" 
+        <div class="text">
+          <h3>    Your House Price Estimate: {{result}} </h3>
+        </div>
+    <br> <br> <br>    
+    <div class="content" align="center">
+        <img  align = "center" src="static/decrease.png" 
+        <div class="text">
+          <br>
+          {% if result2== 0 %}
+          <h3>    The price is already as low as it can be. </h3>
+          {% else %}
+          <h3>    To decrease price most, change {{result2}} to {{result3}} and price would be: {{result4}} </h3>
+          {% endif %}
+        </div>
+        <br> <br> <br> 
+        <div class="content">  <h3> Want to predict for another set of attributes? Click "Home" under "More". </h3></div>
+
+    </div>
+</div>
+
+<div class="menu" >
+    <div class="label"><h4>More</h4></div>
+    <div class="spacer"></div>
+    <div class="item" onclick="window.location.href='/about';" ><span> <h4>About</h4></span></div>
+    <div class="item" onclick="window.location.href='/data';"><span><h4>Data</h4></span></div>
+    <div class="item" onclick="window.location.href='/contact';"><span><h4>Contact</h4></span></div>
+    <div class="item" onclick="window.location.href='/';"><span><h4>Home</h4></span></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+
+data/data_features.csv: src/make_data.py config/config.yml
+	python src/make_data.py --config=config/config.yml --output=data/data_features.csv
+
+data/model.pkl: data/data_features.csv src/train_model.py config/config.yml
+	python src/train_model.py --config=config/config.yml --input=data/data_features.csv --output=data/model.pkl
+
+make_data: data/data_features.csv
+
+train_model: data/model.pkl
+
+all: make_data train_model

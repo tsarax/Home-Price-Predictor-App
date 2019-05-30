@@ -1,0 +1,50 @@
+model:
+  name: clouds
+  author: Tova Simonson
+  version: AA1
+  description:
+  tags:
+    - classifier
+  dependencies: requirements.txt
+make_data:
+  get_s3:
+    bucket: 'nw-tovasimonson-oregon'
+    file_path: 'kc_house_data.csv'
+    download_path: 'data/raw_data.csv'
+  load_data:
+    path: 'data/raw_data.csv'
+  create_binary_var:
+    variable: ['sqft_basement', 'yr_renovated']
+  append_cityNames:
+    zipColumn: 'zipcode'
+    cityColName: 'city'  
+  log_variable:
+    new_col_name: ['lot_log', 'price_log']  
+    column: ['sqft_lot', 'price']
+  choose_features:
+    features_to_use: ['bedrooms', 'bathrooms', 'lot_log', 'waterfront', 'floors',
+    'condition', 'sqft_basement', 'yr_built', 'yr_renovated', 'city']  
+    target: 'price_log'
+train_model:
+  splitDF_cities:
+    city_list: ['SEATTLE', 'RENTON', 'BELLEVUE', 'KENT', 'REDMOND', 'KIRKLAND', 'AUBURN', 'SAMMAMISH', 'FEDERAL WAY', 'ISSAQUAH']
+  get_target:
+    target: 'price_log'
+  model_train:
+    choose_features:
+      features_to_use: ["bedrooms", "bathrooms", "lot_log", "floors", "condition", "waterfront", "sqft_basement", "yr_built", "yr_renovated"]
+    split_data: 
+      train_size: 0.7
+      test_size: 0.3
+      random_state: 20 
+    #save_tmo: 'data/model.pkl' 
+  model_score: 
+    city_list: ['SEATTLE', 'RENTON', 'BELLEVUE', 'KENT', 'REDMOND', 'KIRKLAND', 'AUBURN', 'SAMMAMISH', 'FEDERAL WAY', 'ISSAQUAH']
+    path_results: 'data/results.csv'
+  format_coefs:
+    city_list: ['SEATTLE', 'RENTON', 'BELLEVUE', 'KENT', 'REDMOND', 'KIRKLAND', 'AUBURN', 'SAMMAMISH', 'FEDERAL WAY', 'ISSAQUAH']
+    path_save: 'data/coefs.csv'
+
+         
+
+    
