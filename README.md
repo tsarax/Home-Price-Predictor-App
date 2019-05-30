@@ -1,12 +1,10 @@
 
-for midproject
-# Example project repository
+# AVC Project repository
 
 <!-- toc -->
 
 - [Project Charter](#project-charter)
 - [Repo structure](#repo-structure)
-- [Documentation](#documentation)
 - [Running the application](#running-the-application)
   * [1. Set up environment](#1-set-up-environment)
     + [With `virtualenv` and `pip`](#with-virtualenv-and-pip)
@@ -28,138 +26,51 @@ for midproject
 As our mission is to make the house hunting process less daunting, faster, and more affordable, the business success will be determined by user appreciation for suggestions given by the app. For instance, once a user runs their search in the app, we will give the predicted cost and a suggestion for changing an attribute that reduces this cost. The user can interact with the interface to indicate if this suggestion was helpful or not. 
 
 
-## Backlog 
-\* indicates to-do in next two weeks
-
-### Theme1: Predicting Housing Cost
-
-***Epic1:*** Python-Based Predictive Model
-
-**Story1:** Data Cleaning - 2points 
-
-**Story2:** Model Building: Stepwise Linear Regression -1 point 
-
-**Story3:** Model Predictions: Linear Regression -1 point 
-
-**Story4:** Model Building: Random Forest -1 point 
-
-**Story5:** Model Predictions: Random Forest -1 point 
-
-**Story6:** Compare Models & Pick Best - 0 points 
-
-**Story7:** Model Testing -2 points 
-
-**Story8:** Model Unit Testing -4 points \*
-
-**Story9:** Model Scripts - 4 points \*
-
-**Story10:** Model documentation - 4 points \*
-
-***Epic2:*** Data Setup
-
-**Story1:** S3 raw data - 1 point \*
-
-**Story2:** RDS set up and script - 1 point \*
-
-***Epic3:*** User Interface
-
-**Story1:** Develop interface code (CSS and HTML) -8 points
-
-**Story2:** User input interact with model -4 points
-
-**Story3:** A/B Testing -8 points
-
-### Theme2: Housing Scenario Generator
-
-***Epic1:*** Predict most significant attribute to decrease cost
-
-**Story1:** Develop code to indicate most significant price change -4 points
-
-**Story2:** Develop code to change the significant attribute appropriately and run a new prediction -4 points
-
-***Epic2:*** User Interface
-
-**Story1:** Develop interface code for showing suggestion -2 points
-
-**Story2:** Develop two buttons: like and dislike for suggestion-4 points
-
-**Story3:** Store suggestion likes and dislikes -4 points
-
-**Stroy4:** Logging Information -4 points
-
-
-## Icebox
-
-### Theme1: Compare Searches
-
-***Epic1:*** Storing past search and result
-
-**Story1:** Create dataframe for searches done during session -8 points
-
-***Epic2:*** Changing interface for new search
-
-**Story1:** Create button for new search -2 points
-
-**Story2:** Move past search below current search -8 points
-
 
 ## Repo structure 
 
 ```
 ├── README.md                         <- You are here
 │
-├── app
-│   ├── static/                       <- CSS, JS files that remain static 
-│   ├── templates/                    <- HTML (or other code) that is templated and changes based on a set of inputs
-│   ├── models.py                     <- Creates the data model for the database connected to the Flask app 
-│   ├── __init__.py                   <- Initializes the Flask app and database connection
+├── static                            <- Directory for CSS, images that remain static 
+│   ├── about.png/                    <- Image for 'about' header.
+│   ├── banner4.png/                  <- Image for 'homepage' header.
+│   ├── basic.css/                    <- CSS for all html templates.
+│   ├── contact.png/                  <- Image for 'contact' header.
+│   ├── data.png/                     <- Image for 'data' header.
+│   ├── decrease.png/                 <- Image icon for price decrease on results page.
+│   ├── house.png/                    <- Image icon for home price prediction on results page.
+│   ├── result_banner1.png/           <- Image for 'result' page header.
+|
+├── templates/                        <- Directory for HTML that is templated and changes based on a set of inputs
+│   ├── about.html/                   <- Template for about page.
+│   ├── contact.html/                 <- Template for contact page.
+│   ├── data.html/                    <- Template for data page.
+│   ├── index.html/                   <- Template for home page.
+│   ├── result.html/                  <- Template for result page.
 │
 ├── config                            <- Directory for yaml configuration files for model training, scoring, etc
-│   ├── logging/                      <- Configuration files for python loggers
+│   ├── config.yml/                   <- Configuration yaml file for getting data and training model.
+|   ├── dbconfig.yml/                 <- Configuration yaml file for setting up the database. 
+|   ├── fask_config.py/               <- Configuration file for flask app. 
 │
-├── data                              <- Folder that contains data used or generated. Only the external/ and sample/ subdirectories are tracked by git. 
-│   ├── archive/                      <- Place to put archive data is no longer usabled. Not synced with git. 
-│   ├── external/                     <- External data sources, will be synced with git
-│   ├── sample/                       <- Sample data used for code development and testing, will be synced with git
+├── data                              <- Folder that contains data used or generated. 
 │
-├── docs                              <- A default Sphinx project; see sphinx-doc.org for details.
+├── Seattle Models.ipynb              <- Original notebook used for EDA, training, building out logic. 
 │
-├── figures                           <- Generated graphics and figures to be used in reporting.
-│
-├── models                            <- Trained model objects (TMOs), model predictions, and/or model summaries
-│   ├── archive                       <- No longer current models. This directory is included in the .gitignore and is not tracked by git
-│
-├── notebooks
-│   ├── develop                       <- Current notebooks being used in development.
-│   ├── deliver                       <- Notebooks shared with others. 
-│   ├── archive                       <- Develop notebooks no longer being used.
-│   ├── template.ipynb                <- Template notebook for analysis with useful imports and helper functions. 
-│
-├── src                               <- Source data for the project 
-│   ├── archive/                      <- No longer current scripts.
-│   ├── helpers/                      <- Helper scripts used in main src files 
-│   ├── sql/                          <- SQL source code
-│   ├── add_songs.py                  <- Script for creating a (temporary) MySQL database and adding songs to it 
-│   ├── ingest_data.py                <- Script for ingesting data from different sources 
-│   ├── generate_features.py          <- Script for cleaning and transforming data and generating features used for use in training and scoring.
-│   ├── train_model.py                <- Script for training machine learning model(s)
-│   ├── score_model.py                <- Script for scoring new predictions using a trained model.
-│   ├── postprocess.py                <- Script for postprocessing predictions and model results
-│   ├── evaluate_model.py             <- Script for evaluating model performance 
-│
-├── test                              <- Files necessary for running model tests (see documentation below) 
-
-├── run.py                            <- Simplifies the execution of one or more of the src scripts 
-├── app.py                            <- Flask wrapper for running the model 
+├── acquire_data.py                   <- Script for taking raw data in S3 bucket and moving to personal bucket.
+├── db2.py                            <- Script for setting up database for user input (SQLite or RDS)
+├── make_data.py                      <- Script for setting up features and data for model, configured by config.yml
+├── train_data.py                     <- Script for training and scoring models, configured by config.yml
+├── application.py                    <- Script for running the application
+├── predict.py                        <- Script for predicting price to be used in application.
+├── decrease_price.py                 <- Script for finding price decrease to be used in application.
+├── unit_tests.py                     <- Script for testing functions working correctly before and after application set up.
+├── makefile                          <- File to link together and create necessary files, models, etc. 
 ├── config.py                         <- Configuration file for Flask app
 ├── requirements.txt                  <- Python package dependencies 
 ```
 This project structure was partially influenced by the [Cookiecutter Data Science project](https://drivendata.github.io/cookiecutter-data-science/).
-
-## Documentation
- 
-* Open up `docs/build/html/index.html` to see Sphinx documentation docs. 
-* See `docs/README.md` for keeping docs up to date with additions to the repository.
 
 ## Running the application 
 ### 1. Set up environment 
@@ -225,11 +136,21 @@ python acquire_data.py
 To create the empty database in RDS, configured in `config.py`, run: 
 
 ```
-python db.py --rds=True
+python db2.py --rds=True
 ```
 
 To create a SQLite database, run:
 
 ```
-python db.py
+python db2.py
 ```
+
+### 5. Run data generation and training
+
+To have necessary files and models for the app, run:
+
+```
+make all 
+```
+
+
