@@ -147,10 +147,43 @@ python db2.py
 
 ### 5. Run data generation and training
 
-To have necessary files and models for the app, run:
+The data is created and the model is trained using a makefile. Edit the makefile and 'config.yml' to change input, output, and config paths.
+To edit these files: 
+```
+vi makefile
+```
+```
+vi config/config.yml
+```
+
+After, or using default settings, to generate features, train, and score model, run:
 
 ```
 make all 
 ```
 
+### 6. Application
+
+When the application runs, it uses models saved from part 5. If you did not use the default savings, edit the model paths in predict.py and decrease_price.py to be the path where the models are saved. 
+To change these paths:
+```
+vi predict.py
+```
+
+```
+vi decrease_price.py
+```
+
+
+To run the application, using SQLite database, run:
+
+```
+python application.py
+```
+
+To run the application, using RDS, uncomment MYSQL specifications in 'config/flask_config.py', fill in your information:
+```
+vi config/flask_config.py
+```
+Then comment out the old SQLALCHEMY_DATABASE_URI.
 
