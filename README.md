@@ -147,7 +147,13 @@ python db2.py
 
 ### 5. Run data generation and training
 
-The data is created and the model is trained using a makefile. Edit the makefile and 'config.yml' to change input, output, and config paths.
+If using default settings(for input/output/config paths), to generate features, train, and score model, run:
+
+```
+make all
+```
+If you do not want to use default settings, the data is created and the model is trained using a makefile. Edit the makefile and 'config.yml' to change input, output, and config paths.
+
 To edit these files: 
 ```
 vi makefile
@@ -156,11 +162,11 @@ vi makefile
 vi config/config.yml
 ```
 
-After, or using default settings, to generate features, train, and score model, run:
+Run generating and training:
+```
+make all
+```
 
-```
-make all 
-```
 
 ### 6. Application
 
