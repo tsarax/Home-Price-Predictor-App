@@ -61,10 +61,10 @@ def create_db(args):
     # if args.user:
     if args.rds:
         conn_type = "mysql+pymysql"
-        user = os.environ.get("MYSQL_USER")
-        password = os.environ.get("MYSQL_PASSWORD")
-        host = os.environ.get("MYSQL_HOST")
-        port = os.environ.get("MYSQL_PORT")
+        user = config.MYSQL_USER
+        password = config.MYSQL_PASSWORD
+        host = config.MYSQL_HOST
+        port = config.MYSQL_PORT
         engine_string = "{}://{}:{}@{}:{}/msia423".\
         format(conn_type, user, password, host, port)
         engine = sql.create_engine(engine_string)
