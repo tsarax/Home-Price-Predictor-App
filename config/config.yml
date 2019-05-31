@@ -1,10 +1,8 @@
 model:
-  name: clouds
+  name: housingApp
   author: Tova Simonson
   version: AA1
   description:
-  tags:
-    - classifier
   dependencies: requirements.txt
 make_data:
   get_s3:
