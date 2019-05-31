@@ -170,26 +170,24 @@ make all
 
 ### 6. Application
 
-When the application runs, it uses models saved from part 5. If you did not use the default savings, edit the model paths in predict.py and decrease_price.py to be the path where the models are saved. 
-To change these paths:
-```
-vi predict.py
-```
-
-```
-vi decrease_price.py
-```
+When the application runs, it uses models saved from part 5.
 
 
-To run the application, using SQLite database, run:
+To run the application, using SQLite database, with the default (data/model.pkl) model file, run:
 
 ```
 python application.py
+```
+
+To run the application, unsing SQLite database, with a different model path, run:
+
+```
+python application.py --input=your_model_path
 ```
 
 To run the application, using RDS, uncomment MYSQL specifications in 'config/flask_config.py', fill in your information:
 ```
 vi config/flask_config.py
 ```
-Then comment out the old SQLALCHEMY_DATABASE_URI.
+Then comment out the old SQLALCHEMY_DATABASE_URI. And run as instructed before. 
 
