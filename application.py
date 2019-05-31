@@ -78,8 +78,7 @@ def print():
         price = 0
         logger.warning("Could not find attribute change and lower price.")
 
-    if housepred >0:
-        logger.info('Successfully predicted price for user input.')
+
     return render_template('result.html', result=housepred, result2=attribute, result3=change, result4=price)
    
 

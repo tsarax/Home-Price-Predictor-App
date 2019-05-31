@@ -127,7 +127,7 @@ def model_train(xDict, yDict, path, **kwargs):
         X = xDict[i]
         X = choose_features(X, **kwargs["choose_features"])
         x_final.append(X)
-    logger.info("dataframe is now of shape %s", x_final.shape)    
+    logger.info("length of x features is  %s", len(x_final))    
 
     #split data    
     finalxDict, finalyDict = split_data(x_final, yDict, **kwargs["split_data"])
@@ -238,7 +238,7 @@ def run_train(args):
         df = pd.read_csv(args.input)
         logger.info("Features for input into model loaded from %s", args.input)
     else:
-        raise ValueError("Path to CSV for input data must be provided through --input for training.)
+        raise ValueError("Path to CSV for input data must be provided through --input for training.")
     
 
     df_dict = splitDF_cities(df, **config_try['splitDF_cities'])

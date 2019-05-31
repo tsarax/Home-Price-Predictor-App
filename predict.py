@@ -34,6 +34,7 @@ def prediction(city, bedrooms, bathrooms, floors, waterfront, condition, sqft_ba
     print(test)
 
     #import pickled model
+    ### CHANGE PATH IF DIFFERENT IN TRAIN_MODEL.PY ARGUMENTS OR DID NOT USE THE DEFAULT ###
     with open("data/model.pkl", "rb") as f:
         models = pickle.load(f)
     model = models[int(city)]  
