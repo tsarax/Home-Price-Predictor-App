@@ -191,3 +191,11 @@ vi config/flask_config.py
 ```
 Then comment out the old SQLALCHEMY_DATABASE_URI. And run as instructed before. 
 
+
+
+## Testing
+In order to run testing on the application, run:
+```
+py.test
+```
+
