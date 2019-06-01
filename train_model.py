@@ -85,7 +85,7 @@ def split_data(XDict, yDict, path_xDict=None, path_yDict=None, train_size=0.7, t
     for i in range(len(XDict)): #loops through the dictionary of dataframes to get each individual dataframe 
         cityX= XDict[i]   #dataframe of features for the city i 
         cityy= yDict[i]   #target dataframe for city i
-        X_train, X_test, y_train, y_test = sklearn.model_selection.train_test_split(cityX, cityy, train_size=0.7)  #splits according to test size
+        X_train, X_test, y_train, y_test = sklearn.model_selection.train_test_split(cityX, cityy, train_size=0.7, random_state=random_state)  #splits according to test size
 
         #make dict for each city that contains train and test dataframes
         X= dict(train=X_train)  

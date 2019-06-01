@@ -123,7 +123,7 @@ def decreased_price_w(m, l):
     return item_list    
 
 
-def dec_price(city, bedrooms, bathrooms, floors, waterfront, condition, sqft_basement, yr_built, yr_renovated, lot_log):
+def dec_price(model, city, bedrooms, bathrooms, floors, waterfront, condition, sqft_basement, yr_built, yr_renovated, lot_log):
     """Takes user input and finds an attribute to change and the value to change it to in order to lower price most.
     
     Arguments:
@@ -142,12 +142,7 @@ def dec_price(city, bedrooms, bathrooms, floors, waterfront, condition, sqft_bas
         items {str, list} -- List containing attribute to change and what to change it to. 
         prices {int} -- price of house when attribute is changed. 
     """
-    #open model pickle
-    ### CHANGE PATH IF DIFFERENT IN TRAIN_MODEL.PY ARGUMENTS OR DID NOT USE THE DEFAULT ###
-    with open("data/model.pkl", "rb") as f:
-        models = pickle.load(f)
-    model = models[int(city)]   
-
+    model = model[int(city)]
     lot_log = np.log(int(lot_log))  #Take log of user input -- how it is in model.
 
     #set user_input format

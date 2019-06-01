@@ -6,6 +6,8 @@ import numpy as np
 from flask_sqlalchemy import SQLAlchemy
 from db2 import User
 import logging
+import argparse
+import pickle
 
 logger = logging.getLogger(__name__)
 
@@ -32,8 +34,8 @@ def mainpage():
     return render_template('index.html')
  
 
-@app.route('/',methods=['POST'])
-def print():
+@app.route('/results',methods=['POST'])
+def result():
     """Result page of webapp
     Args:
         Null
@@ -53,6 +55,10 @@ def print():
     user9 = request.form['yr_renovated']
     user10 = request.form['lot_log']
 
+    with open(path1, "rb") as f:
+        models = pickle.load(f)
+
+
     logger.info('Got user input.')
     user_input1 = User(city=user1, bedrooms=user2, bathrooms=user3, floors=user4, waterfront=user5, condition=user6, sqft_basement=user7, yr_built=user8, yr_renovated=user9,lot_log=user10)
     db.session.add(user_input1)
@@ -60,8 +66,8 @@ def print():
     logger.info("User input committed to database: %s, %s, %s, %s, %s, %s, %s, %s, %s, %s", user1, user2, user3, user4, user5, user6, user7, user8, user9, user10)
 
     # predict house price using model.prediction
-    housepred= prediction( user1, user2, user3, user4, user5, user6, user7, user8, user9, user10)
-    attribute_and_change, price_changes = dec_price(user1, user2, user3, user4, user5, user6, user7, user8, user9, user10)
+    housepred= prediction(models, user1, user2, user3, user4, user5, user6, user7, user8, user9, user10)
+    attribute_and_change, price_changes = dec_price(models, user1, user2, user3, user4, user5, user6, user7, user8, user9, user10)
     try:
         attribute = attribute_and_change[0]
         change = attribute_and_change[1]
@@ -108,5 +114,8 @@ def contact():
 
 
 if __name__ == "__main__":
-
+    parser = argparse.ArgumentParser(description="Predict cloud class")
+    parser.add_argument('--input', help='input path', default="data/model.pkl")
+    args = parser.parse_args()
+    path1 = args.input
     app.run(host = '0.0.0.0', use_reloader=True, port=3000)
