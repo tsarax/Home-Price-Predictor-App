@@ -3,10 +3,10 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 import numpy as np
 import zipcodes
-from make_data import append_cityNames, choose_features, log_variable, create_binary_var
-from train_model import splitDF_cities, get_target
-from predict import prediction
-from decrease_price import dec_price
+from make_data import *
+from train_model import *
+from predict import *
+from decrease_price import *
 import pickle
 
 
@@ -72,6 +72,15 @@ def test_get_target():
     target_result = get_target(split_result, 'price')
     assert type(target_result) is list
     assert len(target_result) == len(cities)
+
+def test_split_data():
+
+def test_model_train():
+
+def test_model_score():
+
+
+def test_format_coefs():           
 
 
 ## tests for application scripts
