@@ -1,6 +1,7 @@
 
 # AVC Project repository
-
+## Creator: Tova Simonson
+## QA: Molly Srour
 <!-- toc -->
 
 - [Project Charter](#project-charter)
@@ -71,6 +72,7 @@ As our mission is to make the house hunting process less daunting, faster, and m
 ├── requirements.txt                  <- Python package dependencies 
 ```
 This project structure was partially influenced by the [Cookiecutter Data Science project](https://drivendata.github.io/cookiecutter-data-science/).
+The HTML/CSS menu was found at https://codepen.io/animatedcreativity/pen/wOqBQr by "Animated Creativity" on codepen (https://codepen.io/animatedcreativity/pens/popular/). 
 
 ## Running the application 
 ### 1. Set up environment 
