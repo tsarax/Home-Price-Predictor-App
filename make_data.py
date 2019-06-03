@@ -10,7 +10,6 @@ import warnings
 import yaml
 import argparse
 import logging 
-import seaborn as sns
 import boto3
 
 logger = logging.getLogger(__name__)

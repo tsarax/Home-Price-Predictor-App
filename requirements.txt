@@ -13,3 +13,4 @@ zipcodes
 pandas
 awscli
 PyYAML<=3.13,>=3.10
+sklearn==0.0

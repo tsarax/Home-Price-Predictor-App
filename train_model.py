@@ -12,7 +12,6 @@ import yaml
 import argparse
 import pickle
 import logging 
-import seaborn as sns
 from make_data import choose_features
 
 logger = logging.getLogger(__name__)
