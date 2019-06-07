@@ -154,7 +154,7 @@ If using default settings(for input/output/config paths), to generate features, 
 ```
 make all
 ```
-If you do not want to use default settings, the data is created and the model is trained using a makefile. Edit the makefile and 'config.yml' to change input, output, and config paths.
+If you do not want to use default settings, the data is created and the model is trained using a makefile. Edit the `makefile` to change input, output, and config paths. To change attributes of the model and paths for getting data and training, edit `config.yml`. If your path is not in a  `data` folder, please create whichever folder you would like to use by doing `mkdir folder`.
 
 To edit these files: 
 ```
@@ -187,7 +187,7 @@ To run the application, unsing SQLite database, with a different model path, run
 python application.py --input=your_model_path
 ```
 
-To run the application, using RDS, uncomment MYSQL specifications in 'config/flask_config.py', fill in your information:
+To run the application, using RDS, uncomment MYSQL specifications in `config/flask_config.py`, fill in your information:
 ```
 vi config/flask_config.py
 ```

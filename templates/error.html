@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="static/basic.css" rel="stylesheet">
+</head>
+
+<body>
+    <h3>
+         <a href = "{{ url_for('mainpage') }}"></a>
+    </h3>
+
+<div class="main" align="center">
+    <br> <br>
+    <h4> We're sorry, no prediction could be made based on the inputs. </h4>
+    <h3> Please return to "Home" under "More" to try again.</h3> 
+    <br>
+    <h3> Make sure you select values for all inputs. </h3>
+
+
+</div>
+<div class="menu" >
+    <div class="label"><h4>More</h4></div>
+    <div class="spacer"></div>
+    <div class="item" onclick="window.location.href='/about';" ><span> <h4>About</h4></span></div>
+    <div class="item" onclick="window.location.href='/data';"><span><h4>Data</h4></span></div>
+    <div class="item" onclick="window.location.href='/contact';"><span><h4>Contact</h4></span></div>
+    <div class="item" onclick="window.location.href='/';"><span><h4>Home</h4></span></div>
+</div>
+
+</body>
+</html>

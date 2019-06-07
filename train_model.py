@@ -104,15 +104,13 @@ def split_data(XDict, yDict, path_xDict=None, path_yDict=None, train_size=0.7, t
 
     return finalxDict, finalyDict
 
-def model_train(xDict, yDict, path, **kwargs):
+def model_train(xDict, yDict, **kwargs):
     """Train each city model and save a dictionary of models to a pickle.
     
     Arguments:
         xDict {Dictionary} -- Dictionary of dataframes with feature variables split into test and train, indexed by the city list. 
         yDict {Dictionary} --  Dictionary of dataframes with target variable split into test and train, indexed by the city list. 
     
-    Keyword Arguments:
-        save_tmo {path} -- Path to save models pickle to(default: {'data/model.pkl'})
     
     Returns:
         models {Model} -- All models of the cities
@@ -142,13 +140,7 @@ def model_train(xDict, yDict, path, **kwargs):
         models.append(model)
     logger.info("%s models made for cities", len(models))    
 
-    #save model to output argument path
-    if args.output is not None:
-        with open(args.output, "wb") as f:
-            pickle.dump(models, f)
-            logger.info("Trained model object saved to %s", args.output)    
-    else:
-        raise ValueError("Path to save models must be given with --output to use for app running.")        
+    
 
     return models, finalxDict, finalyDict
 
@@ -243,6 +235,16 @@ def run_train(args):
     yDict = get_target(df_dict, **config_try['get_target'])
 
     models, xDict, yDict = model_train(df_dict, yDict, path, **config_try['model_train'])
+
+    #save model to output argument path
+    if args.output is not None:
+        with open(args.output, "wb") as f:
+            pickle.dump(models, f)
+            logger.info("Trained model object saved to %s", args.output)    
+    else:
+        raise ValueError("Path to save models must be given with --output to use for app running.")        
+
+
     columns = xDict[0]['train'].columns
     results = model_score(models, xDict, yDict, **config_try['model_score'])
     coefdf = format_coefs(models, columns, **config_try['format_coefs'])      

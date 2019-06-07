@@ -42,51 +42,56 @@ def result():
     Returns:
         flask-obj: rendered html page
     """
-    #sets user input of form equal to following variables
-    logger.info("At results page.")
-    user1 = request.form['city']
-    user2 = request.form['bedrooms']
-    user3 = request.form['bathrooms']
-    user4 = request.form['floors']
-    user5 = request.form['waterfront']
-    user6 = request.form['condition']
-    user7 = request.form['sqft_basement']
-    user8 = request.form['yr_built']
-    user9 = request.form['yr_renovated']
-    user10 = request.form['lot_log']
 
-    with open(path1, "rb") as f:
-        models = pickle.load(f)
-
-
-    logger.info('Got user input.')
-    user_input1 = User(city=user1, bedrooms=user2, bathrooms=user3, floors=user4, waterfront=user5, condition=user6, sqft_basement=user7, yr_built=user8, yr_renovated=user9,lot_log=user10)
-    db.session.add(user_input1)
-    db.session.commit()
-    logger.info("User input committed to database: %s, %s, %s, %s, %s, %s, %s, %s, %s, %s", user1, user2, user3, user4, user5, user6, user7, user8, user9, user10)
-
-    # predict house price using model.prediction
-    housepred= prediction(models, user1, user2, user3, user4, user5, user6, user7, user8, user9, user10)
-    attribute_and_change, price_changes = dec_price(models, user1, user2, user3, user4, user5, user6, user7, user8, user9, user10)
     try:
-        attribute = attribute_and_change[0]
-        change = attribute_and_change[1]
-        low_price = int(np.exp(min(price_changes)[0]))
-        price = '${:0,.0f}'.format(low_price)
-        if price == housepred:
+    #sets user input of form equal to following variables
+        logger.info("At results page.")
+        user1 = request.form['city']
+        user2 = request.form['bedrooms']
+        user3 = request.form['bathrooms']
+        user4 = request.form['floors']
+        user5 = request.form['waterfront']
+        user6 = request.form['condition']
+        user7 = request.form['sqft_basement']
+        user8 = request.form['yr_built']
+        user9 = request.form['yr_renovated']
+        user10 = request.form['lot_log']
+
+        with open(path1, "rb") as f:
+            models = pickle.load(f)
+
+
+        logger.info('Got user input.')
+        user_input1 = User(city=user1, bedrooms=user2, bathrooms=user3, floors=user4, waterfront=user5, condition=user6, sqft_basement=user7, yr_built=user8, yr_renovated=user9,lot_log=user10)
+        db.session.add(user_input1)
+        db.session.commit()
+        logger.info("User input committed to database: %s, %s, %s, %s, %s, %s, %s, %s, %s, %s", user1, user2, user3, user4, user5, user6, user7, user8, user9, user10)
+
+        # predict house price using model.prediction
+        housepred= prediction(models, user1, user2, user3, user4, user5, user6, user7, user8, user9, user10)
+        attribute_and_change, price_changes = dec_price(models, user1, user2, user3, user4, user5, user6, user7, user8, user9, user10)
+        try:
+            attribute = attribute_and_change[0]
+            change = attribute_and_change[1]
+            low_price = int(np.exp(min(price_changes)[0]))
+            price = '${:0,.0f}'.format(low_price)
+            if price == housepred:
+                attribute=0
+                change = 0
+                price = 0
+            logger.info("Sucessfully found if there was an attribute that could lower price.")
+        except:
             attribute=0
             change = 0
             price = 0
-        logger.info("Sucessfully found if there was an attribute that could lower price.")
-    except:
-        attribute=0
-        change = 0
-        price = 0
-        logger.warning("Could not find attribute change and lower price.")
+            logger.warning("Could not find attribute change and lower price.")
 
 
-    return render_template('result.html', result=housepred, result2=attribute, result3=change, result4=price)
+        return render_template('result.html', result=housepred, result2=attribute, result3=change, result4=price)
    
+    except: 
+        logger.warning("Not able to predict, error page returned.")
+        return render_template('error.html')
 
 @app.route('/about')
 def about():
