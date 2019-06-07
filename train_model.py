@@ -234,7 +234,7 @@ def run_train(args):
     df_dict = splitDF_cities(df, **config_try['splitDF_cities'])
     yDict = get_target(df_dict, **config_try['get_target'])
 
-    models, xDict, yDict = model_train(df_dict, yDict, path, **config_try['model_train'])
+    models, xDict, yDict = model_train(df_dict, yDict, **config_try['model_train'])
 
     #save model to output argument path
     if args.output is not None:

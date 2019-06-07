@@ -123,4 +123,4 @@ if __name__ == "__main__":
     parser.add_argument('--input', help='input path', default="data/model.pkl")
     args = parser.parse_args()
     path1 = args.input
-    app.run(host = '0.0.0.0', use_reloader=True, port=3000)
+    app.run(host = app.config['HOST'], use_reloader=True, port=app.config['PORT'])

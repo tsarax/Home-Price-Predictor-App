@@ -13,29 +13,6 @@ logger = logging.getLogger(__name__)
 
 Base = declarative_base()
 
-# class House(Base):
-#     """create a table name Song with the following schema"""
-#     __tablename__ = 'house'
-
-#     index = Column(sql.Integer(), primary_key=True, autoincrement=True)
-#     city = Column(String(80), nullable=False)
-#     bedrooms = Column(sql.Float(), nullable=False)
-#     bathrooms = Column(sql.Float(), nullable=False)
-#     floors = Column(sql.Float(), nullable=False)
-#     waterfront = Column(sql.Float())
-#     condition = Column(sql.Float(), nullable=False)
-#     sqft_basement = Column(sql.Float(), nullable=False)
-#     yr_built = Column(sql.Float(), nullable=False)
-#     yr_renovated = Column(sql.Float(), nullable=False)
-#     lot_log = Column(sql.Float(), nullable=False)
-
-
-
-#     def __repr__(self):
-#         house_repr = "<(city='%s',bedrooms='%s', bathrooms='%s', floors='%s',  waterfront='%s', condition='%s',sqft_basement='%s', yr_built='%s', yr_renovated = '%s', sqft_lot='%s')>"
-#         return house_repr % (self.city, self.bedrooms, self.bathrooms, self.floors,  self.waterfront, self.conditon, self.sqft_basement, self.yr_built, self.yr_renovated,self.sqft_lot)
-
-
 class User(Base):
     """Where user inputs will be stored"""
     __tablename__ = 'user'
@@ -61,10 +38,10 @@ def create_db(args):
     # if args.user:
     if args.rds:
         conn_type = "mysql+pymysql"
-        user = config.MYSQL_USER
-        password = config.MYSQL_PASSWORD
-        host = config.MYSQL_HOST
-        port = config.MYSQL_PORT
+        user = config_db.MYSQL_USER
+        password = config_db.MYSQL_PASSWORD
+        host = config_db.MYSQL_HOST
+        port = config_db.MYSQL_PORT
         engine_string = "{}://{}:{}@{}:{}/msia423".\
         format(conn_type, user, password, host, port)
         engine = sql.create_engine(engine_string)

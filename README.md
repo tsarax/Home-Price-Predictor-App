@@ -52,7 +52,6 @@ As our mission is to make the house hunting process less daunting, faster, and m
 │
 ├── config                            <- Directory for yaml configuration files for model training, scoring, etc
 │   ├── config.yml/                   <- Configuration yaml file for getting data and training model.
-|   ├── dbconfig.yml/                 <- Configuration yaml file for setting up the database. 
 |   ├── fask_config.py/               <- Configuration file for flask app. 
 │
 ├── data                              <- Folder that contains data used or generated. 
@@ -68,7 +67,7 @@ As our mission is to make the house hunting process less daunting, faster, and m
 ├── decrease_price.py                 <- Script for finding price decrease to be used in application.
 ├── unit_tests.py                     <- Script for testing functions working correctly before and after application set up.
 ├── makefile                          <- File to link together and create necessary files, models, etc. 
-├── config.py                         <- Configuration file for Flask app
+├── config_db.py                         <- Configuration file for Flask app
 ├── requirements.txt                  <- Python package dependencies 
 ```
 This project structure was partially influenced by the [Cookiecutter Data Science project](https://drivendata.github.io/cookiecutter-data-science/).
@@ -77,7 +76,7 @@ The HTML/CSS menu was found at https://codepen.io/animatedcreativity/pen/wOqBQr 
 ## Running the application 
 ### 1. Set up environment 
 
-The `requirements.txt` file contains the packages required to run the model code. An environment can be set up in two ways. See bottom of README for exploratory data analysis environment setup. 
+The `requirements.txt` file contains the packages required to run the model code. An environment can be set up in two ways. Please be in the directory of this project before installing `requirements.txt`.
 
 #### With `virtualenv`
 
@@ -102,7 +101,7 @@ pip install -r requirements.txt
 
 ### 2. Set up configurations for RDS (database) and AWS (get data):
 
-`config.py` holds the configurations. It includes the following configurations:
+`config_db.py` holds the configurations. It includes the following configurations:
 
 MYSQL_USER=""
 
@@ -126,7 +125,7 @@ AWS_FILE_PATH=""
 
 ### 3. Get the data
 
-To put the data into your S3 Bucket that was configured in `config.py`, run:
+To put the data into your S3 Bucket that was configured in `config_db.py`, run:
 ```
 python acquire_data.py
 ```
@@ -135,7 +134,7 @@ python acquire_data.py
 
 ### 4. Initialize the database 
 
-To create the empty database in RDS, configured in `config.py`, run: 
+To create the empty database in RDS, configured in `config_db.py`, run: 
 
 ```
 python db2.py --rds=True
