@@ -140,10 +140,16 @@ To create the empty database in RDS, configured in `config_db.py`, run:
 python db2.py --rds=True
 ```
 
-To create a SQLite database, run:
+To create a SQLite database, with default name (user.db) run:
 
 ```
-python db2.py
+python db2.py 
+```
+
+To create a SQLite database, with different name (name in format with db extension like name.db) run:
+
+```
+python db2.py --dbName=name.db
 ```
 
 ### 5. Run data generation and training

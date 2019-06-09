@@ -55,7 +55,7 @@ def create_db(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Create and/or add data to database")
     parser.add_argument('--rds', default=False, help='path to yaml file with configurations')
-    parser.add_argument('--dbName', defualt='user.db', help='database name, do not include sqlite:///')
+    parser.add_argument('--dbName', default='user.db', help='database name, do not include sqlite:///')
 
     args = parser.parse_args()
     create_db(args)
