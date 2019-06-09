@@ -47,30 +47,15 @@ def create_db(args):
         engine = sql.create_engine(engine_string)
         Base.metadata.create_all(engine)
     else:
-        engine_string_sqlite = 'sqlite:///user.db'
+        engine_string_sqlite = 'sqlite:///' + args.dbName
         engine_sqlite = sql.create_engine(engine_string_sqlite)
         Base.metadata.create_all(engine_sqlite)
-    # else:       
-    #     if args.rds:
-    #         conn_type = "mysql+pymysql"
-    #         user = os.environ.get("MYSQL_USER")
-    #         password = os.environ.get("MYSQL_PASSWORD")
-    #         host = os.environ.get("MYSQL_HOST")
-    #         port = os.environ.get("MYSQL_PORT")
-    #         engine_string = "{}://{}:{}@{}:{}/msia423".\
-    #         format(conn_type, user, password, host, port)
-    #         engine = sql.create_engine(engine_string)
-    #         Base.metadata.create_all(engine)
-    #     else:
-    #         engine_string_sqlite = 'sqlite:///house.db'
-    #         engine_sqlite = sql.create_engine(engine_string_sqlite)
-    #         Base.metadata.create_all(engine_sqlite)
-
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Create and/or add data to database")
     parser.add_argument('--rds', default=False, help='path to yaml file with configurations')
+    parser.add_argument('--dbName', defualt='user.db', help='database name, do not include sqlite:///')
 
     args = parser.parse_args()
     create_db(args)
