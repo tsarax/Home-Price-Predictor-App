@@ -129,6 +129,7 @@ To put the data into your S3 Bucket that was configured in `config_db.py`, run:
 ```
 python acquire_data.py
 ```
+Note: if you are not using the default "data" folder please make your directory folder before running the above line by running `mkdir folder`
  
  
 
