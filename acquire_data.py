@@ -5,15 +5,15 @@ import logging
 import pandas as pd
 import os
 from os import path
-import config
+import config_db
 import boto3
 import argparse
 
 def transferData():
-   key_id = config.AWS_KEY_ID
-   access_key = config.AWS_ACCESS_KEY
-   copy_bucket = config.AWS_BUCKET
-   copy_location = config.AWS_FILE_PATH
+   key_id = config_db.AWS_KEY_ID
+   access_key = config_db.AWS_ACCESS_KEY
+   copy_bucket = config_db.AWS_BUCKET
+   copy_location = config_db.AWS_FILE_PATH
 
    s3 = boto3.resource('s3',
         aws_access_key_id=key_id,

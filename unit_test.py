@@ -131,13 +131,13 @@ def test_model_train():
         }
     }}
     models, finalxDict, finalyDict = model_train(xDict, yDict,**d['model_train'])
-    with open('data/unitTest_model.pkl', "wb") as f:
+    with open('unitTest_model.pkl', "wb") as f:
         pickle.dump(models, f)
     assert len(models) == len(cities)
     assert type(models[0]) is sklearn.linear_model.base.LinearRegression
 
 def test_model_score():
-    with open('data/unitTest_model.pkl', 'rb') as f:
+    with open('unitTest_model.pkl', 'rb') as f:
         models = pickle.load(f) 
     cities = ['phx', 'hou']
     x, y = split_data(xDict, yDict)
@@ -148,7 +148,7 @@ def test_model_score():
 def test_format_coefs():           
     cities = ['phx', 'hou']
     columns = ["bedrooms", "bathrooms", "floors", "waterfront", "condition", "sqft_basement", "yr_built", "yr_renovated", "lot_log"]
-    with open('data/unitTest_model.pkl', 'rb') as f:
+    with open('unitTest_model.pkl', 'rb') as f:
         models = pickle.load(f) 
     coefs = format_coefs(models, columns, cities)
     assert type(coefs) is pd.core.frame.DataFrame
@@ -158,14 +158,14 @@ def test_format_coefs():
 
 def test_input_prediction():
     """ Tests the prediction function from app.predict.py to ensure user inputs are predicted correctly"""
-    with open('data/unitTest_model.pkl', 'rb') as f:
+    with open('unitTest_model.pkl', 'rb') as f:
         models = pickle.load(f) 
     predict_result= prediction(models, 0, 4, 5, 3, 0, 4, 0, 1950, 0, 10000)
     assert type(predict_result) is str
 
 def test_dec_price():
     """ Tests the decrease price function from app.decrease_price.py to ensure the correct output is being made"""
-    with open('data/unitTest_model.pkl', 'rb') as f:
+    with open('unitTest_model.pkl', 'rb') as f:
         models = pickle.load(f) 
     test_items, test_prices = dec_price(models, 0, 4, 5, 3, 0, 4, 0, 1950, 0, 10000)
     assert type(test_items) is list

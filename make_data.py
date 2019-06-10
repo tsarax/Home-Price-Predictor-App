@@ -11,6 +11,7 @@ import yaml
 import argparse
 import logging 
 import boto3
+import config_db
 
 logger = logging.getLogger(__name__)
 
@@ -23,10 +24,9 @@ def get_s3(bucket, file_path, download_path, **kwargs):
         file_path {String} -- Path to data within S3 Bucket
         download_path {String} -- Path to save data to
     """
-    s3 = boto3.resource('s3')
+    s3 = boto3.client('s3', aws_access_key_id=config_db.AWS_KEY_ID, aws_secret_access_key=config_db.AWS_ACCESS_KEY)
 
-    bucket = s3.Bucket(bucket)
-    bucket.download_file(file_path, download_path)
+    s3.download_file(bucket, file_path, download_path)
     logger.info("The data has been downloaded from S3 and is stored in %s", file_path)
 
 

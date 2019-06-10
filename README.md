@@ -105,7 +105,7 @@ pip install -r requirements.txt
 mkdir data
 ```
 
-### 2. Set up configurations for RDS (database) and AWS (get data):
+### 3. Set up configurations for RDS (database) and AWS (get data):
 
 `config_db.py` holds the configurations. It includes the following configurations:
 
@@ -129,7 +129,7 @@ AWS_FILE_PATH=""
 
 
 
-### 3. Get the data
+### 4. Get the data
 
 To put the data into your S3 Bucket that was configured in `config_db.py`, run:
 ```
@@ -139,7 +139,7 @@ Note: if you are not using the default "data" folder please make your directory 
  
  
 
-### 4. Initialize the database 
+### 5. Initialize the database 
 
 To create the empty database in RDS, configured in `config_db.py`, run: 
 
@@ -159,15 +159,21 @@ To create a SQLite database, with different name (name in format with db extensi
 python db2.py --dbName=name.db
 ```
 
-### 5. Run data generation and training
 
-If using default settings(for input/output/config paths), to generate features, train, and score model, run:
+### 6. Change paths. 
+Change bucket name and path in  `config/config.yml`:
+```
+vi config.yml
+```
+
+If you used the dbName argument for SQLite, make sure database name matches name you just selected, if not, change in format "sqlite:///name.db":
 
 ```
-make all
+vi config/config_flask.py
 ```
 
-If you do not want to use default settings, the data is created and the model is trained using a makefile. Again, if you are using a different data folder than `data` you will have to edit the following. Edit `makefile` to change input, output, and config paths. To change attributes of the model and paths for getting data and training, edit `config.yml`. 
+#Optional, proceed if changing paths from default:
+For saving output, if you do not want to use default paths or the default `data` folder, the data is created and the model is trained using a makefile. Edit `makefile` to change input, output, and config paths. To change attributes of the model and paths for getting data and training, edit `config.yml` (change download_path, path (in load_data), path_results, path_save). 
 
 To edit these files: 
 ```
@@ -176,6 +182,9 @@ vi makefile
 ```
 vi config/config.yml
 ```
+
+
+### 7. Run data generation and training
 
 Run generating and training:
 ```

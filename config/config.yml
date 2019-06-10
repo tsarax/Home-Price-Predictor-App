@@ -35,7 +35,6 @@ train_model:
       train_size: 0.7
       test_size: 0.3
       random_state: 20 
-    #save_tmo: 'data/model.pkl' 
   model_score: 
     city_list: ['SEATTLE', 'RENTON', 'BELLEVUE', 'KENT', 'REDMOND', 'KIRKLAND', 'AUBURN', 'SAMMAMISH', 'FEDERAL WAY', 'ISSAQUAH']
     path_results: 'data/results.csv'

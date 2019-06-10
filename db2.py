@@ -4,6 +4,7 @@ import logging
 import pandas as pd
 import os
 from os import path
+import config_db
 import argparse
 from sqlalchemy import create_engine, Column, Integer, String, Text
 from sqlalchemy.orm import sessionmaker
