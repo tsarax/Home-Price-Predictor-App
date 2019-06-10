@@ -99,6 +99,12 @@ pip install -r requirements.txt
 
 ```
 
+### 2. Create folder where data will be stored. Here, the folder name is "data" which is the default. If you make a different folder name, you will have to change all occurences of "data" to the folder name in `config.yml` and makefile. 
+
+```
+mkdir data
+```
+
 ### 2. Set up configurations for RDS (database) and AWS (get data):
 
 `config_db.py` holds the configurations. It includes the following configurations:
@@ -159,7 +165,8 @@ If using default settings(for input/output/config paths), to generate features, 
 ```
 make all
 ```
-If you do not want to use default settings, the data is created and the model is trained using a makefile. Edit the `makefile` to change input, output, and config paths. To change attributes of the model and paths for getting data and training, edit `config.yml`. If your path is not in a  `data` folder, please create whichever folder you would like to use by doing `mkdir folder`.
+
+If you do not want to use default settings, the data is created and the model is trained using a makefile. Again, if you are using a different data folder than `data` you will have to edit the following. Edit `makefile` to change input, output, and config paths. To change attributes of the model and paths for getting data and training, edit `config.yml`. 
 
 To edit these files: 
 ```
