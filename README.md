@@ -57,6 +57,7 @@ As our mission is to make the house hunting process less daunting, faster, and m
 ├── data                              <- Folder that contains data used or generated. 
 │
 ├── Seattle Models.ipynb              <- Original notebook used for EDA, training, building out logic. 
+├── AVC PRES.pptx.pdf                 <- Final Presentation
 │
 ├── acquire_data.py                   <- Script for taking raw data in S3 bucket and moving to personal bucket.
 ├── db2.py                            <- Script for setting up database for user input (SQLite or RDS)
