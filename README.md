@@ -192,7 +192,7 @@ make all
 ```
 
 
-### 6. Application
+### 8. Application
 
 When the application runs, it uses models saved from part 5.
 
