@@ -1,4 +1,4 @@
-
+.PHONY make_data train_model
 data/data_features.csv: make_data.py config/config.yml
 	python make_data.py --config=config/config.yml --output=data/data_features.csv
 
