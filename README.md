@@ -170,7 +170,7 @@ vi config.yml
 If you used the dbName argument for SQLite, make sure database name matches name you just selected, if not, change in format "sqlite:///name.db":
 
 ```
-vi config/config_flask.py
+vi config/flask_config.py
 ```
 
 #Optional, proceed if changing paths from default:
